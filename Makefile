@@ -2,10 +2,10 @@ BUILD_DIR = build
 CC = gcc
 
 build_dir:
-	if [ ! -d $(BUILD_DIR) ]; then mkdir $(BUILD_DIR); fi
+  if [ ! -d $(BUILD_DIR) ]; then mkdir $(BUILD_DIR); fi
 
-run: main.c
-	gcc ./src/main.c -o ./$(BUILD_DIR)/main
+run: ./src/main.c build_dir
+  gcc ./src/main.c -o ./$(BUILD_DIR)/main && ./$(BUILD_DIR)/main
 
 clean:
-	rm -r ./$(BUILD_DIR)/*	
+  rm -r ./$(BUILD_DIR)/*

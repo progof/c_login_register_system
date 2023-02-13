@@ -37,13 +37,13 @@ void login()
 
     if(file_ptr != NULL)
     {
-        printf("Enter nickname");
-        scanf("%s", &nickname);
+        printf("Enter nickname: ");
+        scanf("%s", nickname);
 
-        printf("Enter password");
-        scanf("%s", &password);
+        printf("Enter password: ");
+        scanf("%s", password);
 
-        fprintf(file_ptr, "%s | %s", nickname, password);
+        fprintf(file_ptr, "%s | %s\n", nickname, password);
     }else
     {
         fprintf(stderr, "\n\nFailed to create file 'users.txt' or open file 'users.txt'\n\n");
