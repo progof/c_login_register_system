@@ -1,3 +1,5 @@
+// Registration and authorization system
+ 
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -58,12 +60,11 @@ void login()
 
         while(fread(&login,sizeof(login),1,file_ptr))
         {
-        if(strcmp(username,login.username)==0 && strcmp(password,login.password)==0)
-
+            if(strcmp(username,login.username)==0 && strcmp(password,login.password)==0)
             {   
                 printf("\nSuccessful Login\n");
             }
-        else 
+            else 
             {
                 printf("\nIncorrect Login Details\nPlease enter the correct credentials\n");
             }
@@ -92,7 +93,8 @@ void registration()
         printf("Enter password: ");
         scanf("%s", login.password);
 
-        fprintf(file_ptr, "%s %s\n", login.username, login.password);
+        fwrite(&login,sizeof(login),1,file_ptr);
+        //fprintf(file_ptr, "%s%s\n", login.username, login.password);
     }else
     {
         fprintf(stderr, "\n\nFailed to create file 'users.txt' or open file 'users.txt'\n\n");
