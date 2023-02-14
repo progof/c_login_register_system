@@ -1,17 +1,11 @@
-TARGET = LogRegSys
+BUILD_DIR = build
 CC = gcc
 
-PREF_SRC = ./src/
-PREF_OBJ = ./obj/
+build_dir:
+	if [ ! -d $(BUILD_DIR) ]; then mkdir $(BUILD_DIR); fi
 
-SRC = $(wildcard $(PREF_SRC)*.c)
-OBJ = $(patsubst $(PREF_SRC)%.c, $(PREF_OBJ)%.o, $(SRC))
-
-$(TARGET) : $(OBJ)
-  $(CC) $(OBJ) -o $(TARGET)
-
-$(PREF_OBJ)%.o : $(PREF_SRC)%.c
-  $(CC) -c $< -o $@
+run: ./src/main.c build_dir
+	gcc ./src/main.c -o ./$(BUILD_DIR)/main
 
 clean:
-  rm $(TARGET) $(PREF_OBJ)*.o
+	rm -r ./$(BUILD_DIR)/*	
