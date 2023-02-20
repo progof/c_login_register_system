@@ -10,14 +10,18 @@ struct account
     char password[15];
 };
 
-
 void login (void);
 void registration(void);
 
+
+
 int main()
-{   
+{  
+
     short option;
-    printf("\nChoose one of the numbers to interact with the program\n\n 1. Login to system\n 2. Register to system\n 3. Exit\n\n Please select option: ");
+    while (option != 3)
+    { 
+    printf("\nChoose one of the numbers to interact with the program\n\n 1. Login to system\n 2. Register to system\n3. Exit\n\n Please select option: ");
     scanf("%hd", &option);
 
     switch (option)
@@ -30,16 +34,19 @@ int main()
     case 2:
         system("CLS");
         registration();
-        break;
+        continue;
 
     case 3:
-        return 0;
+        return 0;   
 
     default:
         printf("\n\nError: No such option!!!\n\n");
         break;
     }
+
+    } 
 }
+
 
 void login()
 {
@@ -83,7 +90,7 @@ void registration()
 {
     struct account login;
     printf("\n\nRegistration\n\n");
-    FILE *file_ptr = fopen("users.txt", "r+a");
+    FILE *file_ptr = fopen("users.txt", "a+");
 
     if(file_ptr != NULL)
     {
